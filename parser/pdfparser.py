@@ -5,8 +5,6 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 
-from utilities.misc import bugprint
-
 
 # Parse the PDF file and store results in the dictionary
 # Dictionary: {page_number: page_text}

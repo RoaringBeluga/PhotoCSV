@@ -1,7 +1,7 @@
 # Used for parsing report PDF data
 report_regexes = {
     'cms_2s_plus_zh': {
-        'power':'功率: [0-9.]+W',
+        'power': '功率: [0-9.]+W',
         'PF': r'功率因数: [0-9.]+\s',
         'flux': r'光通量: [0-9.]+\slm',
         'Ra': r'Ra=[-\s]*[0-9.]+[0-9]',
@@ -62,11 +62,10 @@ if __name__ == '__main__':
     config_info['report_regexes'] = report_regexes
     config_info['photometer_regexes'] = photometer_regexes
 
-    with open('config.yaml', mode = 'w') as config_dump:
+    with open('config.yaml', mode='w') as config_dump:
         yaml.dump(
             config_info,
             config_dump,
             default_flow_style=False,
-            encoding = 'utf-8'
+            encoding='utf-8'
         )
-

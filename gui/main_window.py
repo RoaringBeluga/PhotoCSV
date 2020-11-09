@@ -3,8 +3,6 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter import ttk
 
-from utilities.misc import bugprint
-
 
 class MainWindow:
     input_dir = ''
@@ -22,7 +20,7 @@ class MainWindow:
 
     discombobulate_button = None
 
-    callback = None
+    callback = None  # Callback function to perform actual work
 
     def run(self):
         self.main_window.mainloop()
@@ -44,7 +42,7 @@ class MainWindow:
         self.selected_output_dir.set(self.output_dir)
         self.selected_output_file = tk.StringVar()
         self.selected_output_file.set(self.output_file)
-
+        # Create labels...
         ttk.Label(
             self.main_window,
             text=' Input dir: ',
@@ -60,7 +58,7 @@ class MainWindow:
             text='Output file: ',
             background='SystemButtonFace'
         ).grid(row=2, column=0)
-
+        # Create input fields...
         self.input_dir_field = ttk.Entry(
             self.main_window,
             textvariable=self.selected_input_dir
@@ -73,7 +71,7 @@ class MainWindow:
             self.main_window,
             textvariable=self.selected_output_file
         ).grid(row=2, column=1)
-
+        # Create input dir selection button...
         self.select_input_dir_button = ttk.Button(
             self.main_window,
             text='Select...'
@@ -99,16 +97,15 @@ class MainWindow:
             self.main_window,
             text='Process reports!',
             command=self.process
-        ).grid(row=4, column = 1)
-        # Gets the requested values of the height and widht.
-        windowWidth = self.main_window.winfo_reqwidth()
-        windowHeight = self.main_window.winfo_reqheight()
-        print("Width", windowWidth, "Height", windowHeight)
+        ).grid(row=4, column=1)
+        # Gets the requested values of the height and width.
+        window_width = self.main_window.winfo_reqwidth()
+        window_height = self.main_window.winfo_reqheight()
         # Gets both half the screen width/height and window width/height
-        positionRight = int(self.main_window.winfo_screenwidth() / 2 - windowWidth / 2)
-        positionDown = int(self.main_window.winfo_screenheight() / 2 - windowHeight / 2)
+        position_right = int(self.main_window.winfo_screenwidth() / 2 - window_width / 2)
+        position_down = int(self.main_window.winfo_screenheight() / 2 - window_height / 2)
         # Positions the window in the center of the page.
-        self.main_window.geometry("+{}+{}".format(positionRight, positionDown))
+        self.main_window.geometry("+{}+{}".format(position_right, position_down))
 
     def select_input_dir(self):
         temp_input_dir = filedialog.askdirectory(
@@ -124,7 +121,6 @@ class MainWindow:
             parent=self.main_window,
             initialdir=self.selected_output_dir.get()
         )
-        bugprint(f'Set output dir to: {temp_output_dir}')
         if temp_output_dir != '':
             self.output_dir = temp_output_dir
         self.selected_output_dir.set(self.output_dir)
@@ -148,11 +144,11 @@ class MainWindow:
             self.selected_output_dir.get(),
             self.selected_output_file.get()
         )
-        # And now we can report the possible success
+        # And now we can report the (apparent) success
         messagebox.showinfo(
             title='Processing completed',
             message=(f'Input dir: {self.input_dir}\n'
-                    f'Output dir: {self.output_dir}\n'
-                    f'Output file: {self.output_file}'
+                     f'Output dir: {self.output_dir}\n'
+                     f'Output file: {self.output_file}'
                      )
         )

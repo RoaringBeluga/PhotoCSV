@@ -19,6 +19,6 @@ Get file list from the directory
 """
 
 
-def get_file_list(dir, pattern='*.*'):
-    p = Path(dir)
+def get_file_list(file_dir, pattern='*.*'):
+    p = Path(file_dir)
     return list(p.glob(pattern))

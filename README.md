@@ -21,9 +21,7 @@ Either run `python main.py` to use the GUI or run extractor.py from the CLI:
 
 `python extractor.py -h` for help
 
-`python extractor.py -i input_dir -o output_dir -f filename.csv`
-
-to process PDF reports from **input_dir** folder and write the resulting CSV to **file.csv** in **output_dir** folder.
+`python extractor.py -i input_dir -o output_dir -f filename.csv` to process PDF reports from **input_dir** folder and write the resulting CSV to **file.csv** in **output_dir** folder.
 
 Multi-page PDF reports are supported.
 

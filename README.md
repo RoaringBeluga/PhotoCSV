@@ -1,4 +1,4 @@
-#Photometric report to CSV converter
+# Photometric report to CSV converter
 
 ### Reason for it's existence
 
@@ -13,10 +13,29 @@ is meant to produce exacly such a spreadsheet.
 ### Acknowledgements
 This little script would be impossible without:
 
-– [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
+* The [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
 library, which enables the core functionality.
-- Python language, which enables _all_ functionality of
+* Python language, which enables _all_ functionality of
 this project.
-- Tkinter library, which provides the GUI.
+* Tkinter library, which provides the GUI.
 
 ### Usage
+
+_At least Python 3.8 is recommended as the script
+was not tesed with earlier versions. 
+Should work fine, though. Pipenv is used for virtual
+environment management._
+
+Either run main.py to use the GUI or run extractor.py
+from the CLI:
+
+_python extractor.py -h_ for help
+
+_python extractor.py -i input_dir -o output_dir -f filename.csv_
+to process PDF reports from **input_dir** folder and write
+the resulting CSV to **file.csv** in **output_dir** folder.
+
+Multi-page PDF reports are supported.
+
+***Note:*** You will need to edit regex definitions in
+_parser/photometers.py_ to match your needs. 

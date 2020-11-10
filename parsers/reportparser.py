@@ -1,6 +1,6 @@
 import csv
 
-from parser import photometers
+from parsers import photometers
 import re
 
 
@@ -23,7 +23,7 @@ class ReportParser:
                 return key
         # No matching regex set found
         # Set self.equipment to None
-        # Causes parser to skip this page
+        # Causes parsers to skip this page
         self.equipment = None
         return None
 

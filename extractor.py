@@ -3,8 +3,8 @@ import os
 import sys
 from pathlib import Path
 
-import parser.pdfparser as pdf_parser
-import parser.reportparser as r_parser
+import parsers.pdfparser as pdf_parser
+import parsers.reportparser as r_parser
 from utilities.misc import get_file_list
 
 DEBUG = True

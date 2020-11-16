@@ -30,3 +30,9 @@ class PDFParser:
 
     def get_pages(self):
         return self.pages
+
+    def get_page(self):
+        for page in self.pages.values():
+            yield page
+        return None
+

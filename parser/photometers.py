@@ -35,6 +35,15 @@ report_regexes = {
         'CCT': r'Correlated Color Temperature:[0-9]+K',
         'lambda': r'Dominate Wavelength:[\d.]+nm',
         'sample': {'regex': r'Sample Name:[A-Z0-9-]+', 'cut': 12}
+    },
+    'ivy_report_1_en': {
+        'power': r'P=[\d.]+[\s]*W',
+        'PF': r'PF=[\s]*0[.][\d]{4}',
+        'flux': r'Flux:[\s]*[\d.]+[\s]*lm',
+        'Ra': r'Ra=[\d]{2}[.][\d]{1}',
+        'CCT': r'Tc=[0-9]+K',
+        'lambda': r'Ld=[\s]*[\d.]+[\s]*nm',
+        'sample': {'regex': r'Product Type:[A-Za-z0-9-]+', 'cut': 13}
     }
 
 }
@@ -44,7 +53,8 @@ photometer_regexes = {
     'cms_2s_plus_zh': r'创惠仪器[\s]*CMS-2S',
     'cms_2s_plus_en': r'Inventfine[\s]*CMS-2S',
     'everfine_haas_1200_zh': r'HAAS-1200',
-    'wolnic_maybe_en': r'信华电器检测中心'
+    'wolnic_maybe_en': r'信华电器检测中心',
+    'ivy_report_1_en': r'PMS-80_V1 \(SN:YG107113N12030027\)'
 }
 
 """

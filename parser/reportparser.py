@@ -15,6 +15,7 @@ class ReportParser:
     def parse_equipment(self, page):
         # Search for the equipment signature in the page text
         for key, value in photometers.photometer_regexes.items():
+            print(f'Key: {key} and value: {value}')
             match = re.search(value, page)
             # Did we get the equipment? Return it and set the correct regex
             if match:
@@ -30,7 +31,7 @@ class ReportParser:
     def write_csv(self, filename):
         # Writes data to the file <filename>
         with open(filename, mode='w') as outfile:
-            fields = ['power', 'flux', 'CCT', 'Ra', 'PF', 'lambda', 'sample']
+            fields = ['power', 'flux', 'CCT', 'Ra', 'PF', 'lambda', 'sample', 'filename']
             csv_writer = csv.DictWriter(
                 outfile,
                 fieldnames=fields,
@@ -46,7 +47,7 @@ class ReportParser:
         match = re.search(regex, data).group()
         if match:
             match = re.search('[0-9.]+', match).group()
-            match = re.sub(r'.', r',', match)
+            match = re.sub(r'[.]', r',', match)
             return match
         else:
             return None
@@ -61,7 +62,7 @@ class ReportParser:
         else:
             return None
 
-    def parse_report(self, page_data):
+    def parse_report(self, page_data, filename = ''):
         self.parse_equipment(page_data)
         # Bug out if there's no equipment info found
         if self.equipment is None:
@@ -76,4 +77,5 @@ class ReportParser:
         row_data['CCT'] = self.get_numeric_value(self.regex_set['CCT'], page_data)  # Color temp
         row_data['lambda'] = self.get_numeric_value(self.regex_set['lambda'], page_data)  # Dominant wavelength
         row_data['sample'] = self.get_string_value(self.regex_set['sample'], page_data).strip(' ')  # Sample info
+        row_data['filename'] = filename
         self.rows.append(row_data)

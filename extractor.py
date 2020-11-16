@@ -78,10 +78,14 @@ def do_processing(p_input_dir, p_output_dir, p_output_file):
 		pdf_file = pdf_parser.PDFParser()
 		print(f'Processing: {filename}')
 		pdf_file.read_pages(filename)
-		page_set = pdf_file.get_pages()
-		for current_page in page_set.values():
+#		page_set = pdf_file.get_pages()
+#		for current_page in page_set.values():
+		for current_page in pdf_file.get_page():
+			if current_page == None:
+				break
+			print(current_page)
 			# Now parse the page
-			report_parser.parse_report(current_page)
+			report_parser.parse_report(current_page, filename=Path(filename).stem)
 
 	# Processing finished!
 	print(f'Processing finished. Writing {output_file}')

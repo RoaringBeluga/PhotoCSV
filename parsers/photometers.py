@@ -27,7 +27,7 @@ report_regexes = {
         'lambda': r'd=[-\s]*[\d.]+nm',
         'sample': {'regex': r'产品型号:[\s]*[A-Z0-9-]+', 'cut': 5}
     },
-    'wolnic_maybe_en': {
+    'xinhua_baton_en': {
         'power': r'Power:[\d.]+[\s]*W',
         'PF': r'Power Factor:0[.][\d]{4}',
         'flux': r'Flux:[\d.]+lm',
@@ -44,17 +44,27 @@ report_regexes = {
         'CCT': r'Tc=[0-9]+K',
         'lambda': r'Ld=[\s]*[\d.]+[\s]*nm',
         'sample': {'regex': r'Product Type:[A-Za-z0-9-]+', 'cut': 13}
+    },
+    'outlux_report_1_en': {
+        'power': r'Power:[\s]*[\d]+[.]{1}[\d]{2}[\s]*W',  # NOTE: Decimals are important, otherwise we're getting Radiant Power!
+        'PF': r'Power Factor:[\s]*0[.][\d]{4}',
+        'flux': r'Flux:[\s]*[\d.]+[\s]*lm',
+        'Ra': r'Ra=[\s]*[\d]{2}[.][\d]{1}',
+        'CCT': r'Tc=[0-9]+K',
+        'lambda': r'Dominant Wavelength:[\s]*[\d.]+[\s]*nm',
+        'sample': {'regex': r'Product Type:[\s]*[A-Za-z0-9-]+', 'cut': 13}
     }
 
 }
 
 # Used to determine the correct regex set for the report
 photometer_regexes = {
+    'xinhua_baton_en': r'信华电器检测中心',
+    'ivy_report_1_en': r'PMS-80_V1 \(SN:YG107113N12030027\)',
+    'outlux_report_1_en': r'Ningbo OUTLUX Electrical Co',
     'cms_2s_plus_zh': r'创惠仪器[\s]*CMS-2S',
     'cms_2s_plus_en': r'Inventfine[\s]*CMS-2S',
     'everfine_haas_1200_zh': r'HAAS-1200',
-    'wolnic_maybe_en': r'信华电器检测中心',
-    'ivy_report_1_en': r'PMS-80_V1 \(SN:YG107113N12030027\)'
 }
 
 """

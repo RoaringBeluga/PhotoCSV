@@ -36,7 +36,7 @@ class ReportParser:
                 outfile,
                 fieldnames=fields,
                 delimiter=';',
-                quotechar="'",
+                quotechar='"',
                 quoting=csv.QUOTE_NONNUMERIC
             )
             csv_writer.writeheader()

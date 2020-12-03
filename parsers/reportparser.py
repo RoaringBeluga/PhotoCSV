@@ -21,6 +21,7 @@ class ReportParser:
             if match:
                 self.regex_set = photometers.report_regexes[key]
                 self.equipment = key
+                print(f'Selected equipment: {key}')
                 return key
         # No matching regex set found
         # Set self.equipment to None
@@ -31,7 +32,7 @@ class ReportParser:
     def write_csv(self, filename):
         # Writes data to the file <filename>
         with open(filename, mode='w') as outfile:
-            fields = ['power', 'flux', 'CCT', 'Ra', 'PF', 'lambda', 'sample', 'filename']
+            fields = ['sample', 'filename', 'power', 'PF', 'flux', 'Ra', 'CCT', 'lambda']
             csv_writer = csv.DictWriter(
                 outfile,
                 fieldnames=fields,

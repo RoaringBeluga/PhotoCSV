@@ -115,6 +115,7 @@ class MainWindow:
         if temp_input_dir != '':
             self.input_dir = temp_input_dir
         self.selected_input_dir.set(self.input_dir)
+        self.selected_output_dir.set(self.input_dir)
 
     def select_output_dir(self):
         temp_output_dir = filedialog.askdirectory(

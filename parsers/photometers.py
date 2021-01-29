@@ -54,6 +54,15 @@ report_regexes = {
         'lambda': r'Dominant Wavelength:[\s]*[\d.]+[\s]*nm',
         'sample': {'regex': r'Product Type:[\s]*[A-Za-z0-9-]+', 'cut': 13}
     },
+    'outlux_report_2_en': {
+        'power': r'Power:[\s]*[\d]+[.]{1}[\d]{2}[\s]*W',  # NOTE: Decimals are important, otherwise we're getting Radiant Power!
+        'PF': r'Power Factor:[\s]*0[.][\d]{4}',
+        'flux': r'Flux:[\s]*[\d.]+[\s]*lm',
+        'Ra': r'Ra=[\s]*[\d]{2}[.][\d]{1}',
+        'CCT': r'Tc=[0-9]+K',
+        'lambda': r'Dominant Wavelength:[\s]*[\d.]+[\s]*nm',
+        'sample': {'regex': r'Product Type:[\s]*[A-Za-z0-9-]+', 'cut': 13}
+    },
     'yusing_report_1_en': {
         'power': r'P=[\d.]+[\s]*W',
         'PF': r'PF=[\s]*0[.][\d]{4}',
@@ -63,6 +72,15 @@ report_regexes = {
         'lambda': r'Ld=[\s]*[\d.]+[\s]*nm',
         'sample': {'regex': r'Product Type:.*[A-Za-z0-9-]+[\s]*', 'cut': 13}
     },
+    'yusing_report_1_zh': {
+        'power': r'功率：[\d.]+[\s]*W',
+        'PF': r'功率因数：[\s]*0[.][\d]{4}',
+        'flux': r'光通量：[\s]*[\d.]+[\s]*lm',
+        'Ra': r'Ra=[\s]*[\d]{2}[.][\d]{1}',
+        'CCT': r'Tc=[0-9]+K',
+        'lambda': r'主波长：[\s]*[\d.]+[\s]*nm',
+        'sample': {'regex': r'产品型号：.*[A-Za-z0-9-]+[\s]*', 'cut': 5}
+    },
 }
 
 # Used to determine the correct regex set for the report
@@ -70,10 +88,13 @@ photometer_regexes = {
     'xinhua_baton_en': r'信华电器检测中心',
     'ivy_report_1_en': r'PMS-80_V1 \(SN:YG107113N12030027\)',
     'outlux_report_1_en': r'Ningbo OUTLUX Electrical Co',
+    'outlux_report_2_en': r'NINGBO OUTLUX ELECTRICAL CO,.LTD',
     'cms_2s_plus_zh': r'创惠仪器[\s]*CMS-2S',
     'cms_2s_plus_en': r'Inventfine[\s]*CMS-2S',
     'everfine_haas_1200_zh': r'HAAS-1200',
     'yusing_report_1_en': r'G107113CA8321127',
+    'yusing_report_1_zh': r'sphere-spectroradiometer',
+
 }
 
 """
